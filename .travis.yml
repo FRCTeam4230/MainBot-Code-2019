@@ -1,0 +1,16 @@
+language: java
+
+env:
+    global:
+      - JAVA_HOME="$TRAVIS_BUILD_DIR/wpilib/jdk"
+
+jdk:
+  - openjdk11
+
+install:
+  - bash .ci/deps.sh
+  - chmod +x ./gradlew
+
+script:
+  - ./gradlew build
+
