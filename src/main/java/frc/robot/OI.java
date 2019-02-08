@@ -9,12 +9,12 @@
 // it from being updated in the future.
 
 
-package org.usfirst.frc4230.MyRobot;
+package frc.robot;
 
-import org.usfirst.frc4230.MyRobot.commands.*;
+import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
-import org.usfirst.frc4230.MyRobot.subsystems.*;
+import frc.robot.subsystems.*;
 
 
 /**

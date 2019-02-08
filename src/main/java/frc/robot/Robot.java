@@ -1,5 +1,5 @@
 // package
-package org.usfirst.frc4230.MyRobot;
+package frc.robot;
 import edu.wpi.first.wpilibj.Compressor;
 
 
@@ -15,8 +15,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 // Commands and Subsystems.
-import org.usfirst.frc4230.MyRobot.commands.*;
-import org.usfirst.frc4230.MyRobot.subsystems.*;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 
 
 
@@ -47,7 +47,7 @@ public class Robot extends TimedRobot {
     public static BallIntake ballIntake;
     public static HatchIntake hatchIntake;
     public static BallLauncher ballLauncher;
-    public static AnalogInput pressure;
+   // public static AnalogInput pressure;
     public static OI oi;    
 
     Compressor compressor;
@@ -135,10 +135,10 @@ public class Robot extends TimedRobot {
     public void teleopPeriodic() {
         
         Scheduler.getInstance().run();
-        SmartDashboard.putNumber("getvalue", pressure.getValue());
-        SmartDashboard.putNumber("volta", pressure.getVoltage());
-        SmartDashboard.putNumber("getadvalue", pressure.getAverageValue());
-        SmartDashboard.putNumber("getadvolta", pressure.getAverageVoltage());
+     //   SmartDashboard.putNumber("getvalue", pressure.getValue());
+      //  SmartDashboard.putNumber("volta", pressure.getVoltage());
+     //   SmartDashboard.putNumber("getadvalue", pressure.getAverageValue());
+      //  SmartDashboard.putNumber("getadvolta", pressure.getAverageVoltage());
        
         
     }
