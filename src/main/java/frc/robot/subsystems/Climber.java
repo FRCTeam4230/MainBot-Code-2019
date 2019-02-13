@@ -30,9 +30,9 @@ import edu.wpi.first.wpilibj.Solenoid;
 
 public class Climber extends Subsystem {
     //Declares the solenoids for the pistons (THEY ARE SOLENOIDS NOT DOUBLE SOLENOIDS)
-    Solenoid backPiston;
-    Solenoid frontPiston;
-    VictorSPX climberDrive;
+    private Solenoid backPiston;
+    private Solenoid frontPiston;
+    private VictorSPX climberDrive;
 
 
     public static OI oi;
@@ -51,6 +51,8 @@ public class Climber extends Subsystem {
         frontPiston = new Solenoid(4);
         backPiston = new Solenoid(5);
         climberDrive = new VictorSPX(5);
+        frontPiston.set(false);
+        backPiston.set(false);
     }
 
     @Override
@@ -60,40 +62,34 @@ public class Climber extends Subsystem {
 
     @Override
     public void periodic() {
-        // Put code here to be run every loop
-        
-        // sets all solenoids on        
-        if (Robot.oi.driverController.getRawButton(1)){
+        // No periodic code to run
+    }
 
-            frontPiston.set(true);
-            backPiston.set(true);
-            SmartDashboard.putBoolean("backPistonState", true);
-            SmartDashboard.putBoolean("frontPistonState", true);    
-        }
-        // sets all solenoids off
-        if (Robot.oi.driverController.getRawButton(4)){
-            frontPiston.set(false);
-            backPiston.set(false);
-            SmartDashboard.putBoolean("backPistonState", false);
-            SmartDashboard.putBoolean("frontPistonState", false);    
-            
-        }
-        // Changes the state of the solenoids
-        if (Robot.oi.driverController.getRawButton(3)){
-            if( frontPiston.get()){
+    public void lowerAll() {
+        frontPiston.set(true);
+        backPiston.set(true);
+        SmartDashboard.putBoolean("backPistonState", true);
+        SmartDashboard.putBoolean("frontPistonState", true); 
+    }
+
+    public void raiseAll() {
+        frontPiston.set(false);
+        backPiston.set(false);
+        SmartDashboard.putBoolean("backPistonState", false);
+        SmartDashboard.putBoolean("frontPistonState", false); 
+    }
+
+    public void raiseFront() {
+        if( frontPiston.get()){
             frontPiston.set(false);
             SmartDashboard.putBoolean("frontPistonState", false);
-            }
+        }
+    }
 
-
-            
-        }  
-        if (Robot.oi.driverController.getRawButton(2)){
-            if( backPiston.get()){
+    public void raiseBack() {
+        if( backPiston.get()){
             backPiston.set(false);
             SmartDashboard.putBoolean("backPistonState", false);
-            }
-            
         }
     }
 

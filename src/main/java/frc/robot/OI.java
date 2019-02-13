@@ -5,9 +5,11 @@ package frc.robot;
 
 // Imports 
 import frc.robot.commands.*;
+import frc.robot.commands.Climber.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
-import frc.robot.subsystems.*;
+import edu.wpi.first.wpilibj.buttons.*;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 
 /**
@@ -60,14 +62,26 @@ public class OI {
 
         operatorController.setXChannel(1);
         operatorController.setYChannel(0);
-        
 
+        bindDefButtons();
 
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
 
 
     
+    }
+
+    private void bindDefButtons() {
+        Button lowerB = new JoystickButton(driverController, 1);
+        Button raiseB = new JoystickButton(driverController, 4);
+        Button raiseFrontB = new JoystickButton(driverController, 2);
+        Button raiseBackB = new JoystickButton(driverController, 3);
+
+        lowerB.whenPressed(new Lower());
+        raiseB.whenPressed(new Raise());
+        raiseFrontB.whenPressed(new RaiseFront());
+        raiseBackB.whenPressed(new RaiseBack());
     }
 
         //IDK
