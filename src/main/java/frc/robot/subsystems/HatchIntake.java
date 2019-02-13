@@ -32,32 +32,32 @@ public class HatchIntake extends Subsystem {
 
     @Override
     public void initDefaultCommand() {
-        
+
     }
+
+    public void releaseHatch() {
+        HatchReleaseSolenoid.set(true);
+        SmartDashboard.putBoolean("HatchReleasing", true); 
+    }
+
+    public void resetHatch() {
+        HatchReleaseSolenoid.set(false);
+        SmartDashboard.putBoolean("HatchReleasing", false);
+    }
+    
+    public void lowerHatch() {
+        LowerSolenoidAssembly.set(true);
+        SmartDashboard.putBoolean("HatchLowered", true); 
+    }
+
+    public void raiseHatch() {
+        LowerSolenoidAssembly.set(false);
+        SmartDashboard.putBoolean("HatchLowered", false); 
+    }
+
     @Override
     public void periodic() {
-        // Put code here to be run every loop
-
-        // sets the solenoids of the hatch release assembly on or of (release hatch)
-        if (Robot.oi.driverController.getRawButton(6)){
-
-            HatchReleaseSolenoid.set(true);
-            SmartDashboard.putBoolean("HatchLowered", true);    
-        }
-        else{
-            HatchReleaseSolenoid.set(false);
-            SmartDashboard.putBoolean("HatchLowered", false); 
-        }
-        // sets the solenoids for the hatch intake assembly to go down or up (hatch down)
-        if (Robot.oi.driverController.getRawButton(5)){
-
-            LowerSolenoidAssembly.set(true);
-            SmartDashboard.putBoolean("HatchReleasing", true);    
-        }
-        else{
-           LowerSolenoidAssembly.set(false);
-            SmartDashboard.putBoolean("HatchReleasing", false); 
-        }
+        // No periodic code
     }
 }
 
