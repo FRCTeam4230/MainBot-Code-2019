@@ -3,6 +3,7 @@ package frc.robot;
 
 import frc.robot.commands.*;
 import frc.robot.commands.Climber.*;
+import frc.robot.utils.AnalogAxis;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.*;
@@ -42,10 +43,18 @@ public class OI {
         Button raiseFrontB = new JoystickButton(driverController, 2);
         Button raiseBackB = new JoystickButton(driverController, 3);
 
-        lowerB.whenPressed(new Lower());
-        raiseB.whenPressed(new Raise());
-        raiseFrontB.whenPressed(new RaiseFront());
-        raiseBackB.whenPressed(new RaiseBack());
+        lowerB.whenPressed(new frc.robot.commands.Climber.Lower());
+        raiseB.whenPressed(new frc.robot.commands.Climber.Raise());
+        raiseFrontB.whenPressed(new frc.robot.commands.Climber.RaiseFront());
+        raiseBackB.whenPressed(new frc.robot.commands.Climber.RaiseBack());
+
+        AnalogAxis hatchLower = new AnalogAxis(driverController, 3, 0.5);
+        Button hatchRelease = new JoystickButton(driverController, 6);
+
+        hatchLower.whenActive(new frc.robot.commands.Hatch.Lower());
+        hatchLower.whenInactive(new frc.robot.commands.Hatch.Raise());
+        hatchRelease.whenPressed(new frc.robot.commands.Hatch.Release());
+        hatchRelease.whenReleased(new frc.robot.commands.Hatch.Reset());
     }
 
         //IDK
