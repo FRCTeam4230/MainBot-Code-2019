@@ -26,30 +26,24 @@ import frc.robot.subsystems.*;
 
 //import com.revrobotics.CANSparkMax;
 // Spark MAX
-//import com.sun.tools.classfile.StackMapTable_attribute.stack_map_frame;
+// import com.sun.tools.classfile.StackMapTable_attribute.stack_map_frame;
 
 public class Robot extends TimedRobot {
 
     Command autonomousCommand;
-    SendableChooser<Command> chooser = new SendableChooser<>();
-
-
-  
+    SendableChooser<Command> chooser = new SendableChooser<>();  
     public static DriveTrain driveTrain;
     public static Climber climber;
     public static BallIntake ballIntake;
     public static HatchIntake hatchIntake;
-
-   // public static AnalogInput pressure;
+    // public static AnalogInput pressure;
     public static OI oi;    
-
     Compressor compressor;
 
     @Override
     public void robotInit() {
         compressor = new Compressor(0);
         compressor.setClosedLoopControl(true);
-    
 
         driveTrain = new DriveTrain();
         climber = new Climber();
@@ -58,19 +52,15 @@ public class Robot extends TimedRobot {
         
         oi = new OI();
        
-        
         // Add commands to Autonomous Sendable Chooser
-        
         chooser.setDefaultOption("Autonomous Command", new AutonomousCommand());
-
-    
         SmartDashboard.putData("Auto mode", chooser);
     }
 
 
     @Override
     public void disabledInit(){
-
+        // Not implemented
     }
 
     @Override
@@ -91,7 +81,6 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-      
     }
 
     @Override
@@ -107,14 +96,11 @@ public class Robot extends TimedRobot {
      * This function is called periodically during operator control
      */
     @Override
-    public void teleopPeriodic() {
-        
+    public void teleopPeriodic() {    
         Scheduler.getInstance().run();
-     //   SmartDashboard.putNumber("getvalue", pressure.getValue());
-      //  SmartDashboard.putNumber("volta", pressure.getVoltage());
-     //   SmartDashboard.putNumber("getadvalue", pressure.getAverageValue());
-      //  SmartDashboard.putNumber("getadvolta", pressure.getAverageVoltage());
-       
-        
+        // SmartDashboard.putNumber("getvalue", pressure.getValue());
+        // SmartDashboard.putNumber("volta", pressure.getVoltage());
+        // SmartDashboard.putNumber("getadvalue", pressure.getAverageValue());
+        // SmartDashboard.putNumber("getadvolta", pressure.getAverageVoltage());    
     }
 }

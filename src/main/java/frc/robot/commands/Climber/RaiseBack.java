@@ -3,7 +3,6 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import frc.robot.Robot;
 
-
 public class RaiseBack extends Command {
 
     private boolean isFinished;
