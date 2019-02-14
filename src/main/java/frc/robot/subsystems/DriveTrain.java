@@ -11,6 +11,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import frc.robot.OI;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -32,15 +33,15 @@ public class DriveTrain extends Subsystem {
        oic = new OI();
        Boolean sq = false;
         // sets the motor types and declares the object 
-       CANSparkMax m_frontLeft = new CANSparkMax(1, MotorType.kBrushless);
-       CANSparkMax m_rearLeft = new CANSparkMax(2, MotorType.kBrushless);
+       CANSparkMax m_frontLeft = new CANSparkMax(RobotMap.CAN.driveLH1, MotorType.kBrushless);
+       CANSparkMax m_rearLeft = new CANSparkMax(RobotMap.CAN.driveLH2, MotorType.kBrushless);
        
        // Declares the motor group 
        SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
        
        // sets the motor types and declares the object 
-	   CANSparkMax m_frontRight = new CANSparkMax(3, MotorType.kBrushless);
-       CANSparkMax m_rearRight = new CANSparkMax(4, MotorType.kBrushless); 
+	   CANSparkMax m_frontRight = new CANSparkMax(RobotMap.CAN.driveRH1, MotorType.kBrushless);
+       CANSparkMax m_rearRight = new CANSparkMax(RobotMap.CAN.driveRH2, MotorType.kBrushless); 
 
        // Declares the motor group 
        SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);

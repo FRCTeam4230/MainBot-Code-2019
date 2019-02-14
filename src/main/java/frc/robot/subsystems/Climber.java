@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 import frc.robot.OI;
 
@@ -27,8 +28,8 @@ public class Climber extends Subsystem {
     
     public Climber() {
         // initialize variables
-        frontPiston = new Solenoid(4);
-        backPiston = new Solenoid(5);
+        frontPiston = new Solenoid(RobotMap.PCM.climberFront);
+        backPiston = new Solenoid(RobotMap.PCM.climberBack);
         climberDrive = new VictorSPX(5);
         frontPiston.set(false);
         backPiston.set(false);
