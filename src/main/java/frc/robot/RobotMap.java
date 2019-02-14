@@ -13,6 +13,9 @@ public class RobotMap {
         public static int ballIntake = 6;
         public static int linSlide = 7;
     }
+    public static class Constants {
+        public static double intake = 0.4;
+    }
     public static class PCM {
         public static int hatchRelease = 6;
         public static int hatchLower = 3;

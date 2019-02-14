@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -17,17 +16,28 @@ import edu.wpi.first.wpilibj.PIDSource;
 
 public class BallIntake extends Subsystem {
 
-    TalonSRX linearSlideMotor;
     VictorSPX intakeMotor;
 
     public BallIntake() {
-        linearSlideMotor = new TalonSRX(RobotMap.CAN.linSlide);
         intakeMotor = new VictorSPX(RobotMap.CAN.ballIntake);
+        intakeMotor.configOpenloopRamp(1);
     }
 
     @Override
     public void initDefaultCommand() {
 
+    }
+
+    public void ballIn() {
+        intakeMotor.set(ControlMode.PercentOutput, RobotMap.Constants.intake);
+    }
+
+    public void ballOut() {
+        intakeMotor.set(ControlMode.PercentOutput, -1 * RobotMap.Constants.intake);
+    }
+
+    public void stopMotor() {
+        intakeMotor.set(ControlMode.PercentOutput, 0);
     }
 
     @Override

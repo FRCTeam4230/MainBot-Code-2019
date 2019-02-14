@@ -56,6 +56,14 @@ public class OI {
         hatchLower.whenInactive(new frc.robot.commands.Hatch.Raise());
         hatchRelease.whenPressed(new frc.robot.commands.Hatch.Release());
         hatchRelease.whenReleased(new frc.robot.commands.Hatch.Reset());
+
+        Button intakeIn = new JoystickButton(driverController, ControllerMap.buttons.Y);
+        Button intakeOut = new JoystickButton(driverController, ControllerMap.buttons.A);
+
+        intakeIn.whenPressed(new frc.robot.commands.intake.BallIn());
+        intakeIn.whenReleased(new frc.robot.commands.intake.StopMotor());
+        intakeOut.whenPressed(new frc.robot.commands.intake.BallOut());
+        intakeOut.whenReleased(new frc.robot.commands.intake.StopMotor());
     }
 
         //IDK
