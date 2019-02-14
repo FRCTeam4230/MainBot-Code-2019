@@ -1,7 +1,5 @@
 // package
 package frc.robot;
-import edu.wpi.first.wpilibj.Compressor;
-
 
 // Nuematics stuff
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -36,17 +34,17 @@ public class Robot extends TimedRobot {
     public static Climber climber;
     public static BallIntake ballIntake;
     public static HatchIntake hatchIntake;
+    public static CompressorSys compressor;
     // public static AnalogInput pressure;
     public static OI oi;    
-    Compressor compressor;
 
     @Override
     public void robotInit() {
-        compressor = new Compressor(0);
-        compressor.setClosedLoopControl(true);
+
 
         driveTrain = new DriveTrain();
         climber = new Climber();
+        compressor = new CompressorSys();
         ballIntake = new BallIntake();
         hatchIntake = new HatchIntake();
         
