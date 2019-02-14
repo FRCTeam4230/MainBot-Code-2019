@@ -35,6 +35,7 @@ public class Robot extends TimedRobot {
     public static BallIntake ballIntake;
     public static HatchIntake hatchIntake;
     public static CompressorSys compressor;
+    public static LinearSlide slide;
     // public static AnalogInput pressure;
     public static OI oi;    
 
@@ -47,6 +48,7 @@ public class Robot extends TimedRobot {
         compressor = new CompressorSys();
         ballIntake = new BallIntake();
         hatchIntake = new HatchIntake();
+        slide = new LinearSlide();
         
         oi = new OI();
        

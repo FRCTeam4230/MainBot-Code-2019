@@ -64,6 +64,14 @@ public class OI {
         intakeIn.whenReleased(new frc.robot.commands.intake.StopMotor());
         intakeOut.whenPressed(new frc.robot.commands.intake.BallOut());
         intakeOut.whenReleased(new frc.robot.commands.intake.StopMotor());
+
+        Button slideUp = new JoystickButton(operatorController, ControllerMap.buttons.LS);
+        Button slideDown = new JoystickButton(operatorController, ControllerMap.buttons.RS);
+
+        slideUp.whenPressed(new frc.robot.commands.slide.SlideUp());
+        slideUp.whenReleased(new frc.robot.commands.slide.StopMotor());
+        slideDown.whenPressed(new frc.robot.commands.slide.SlideDown());
+        slideDown.whenReleased(new frc.robot.commands.slide.StopMotor());
     }
 
         //IDK
