@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.commands.*;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -26,8 +27,8 @@ public class HatchIntake extends Subsystem {
     Solenoid LowerSolenoidAssembly;
 
     public HatchIntake() {
-        HatchReleaseSolenoid = new Solenoid(6);
-        LowerSolenoidAssembly = new Solenoid(3);
+        HatchReleaseSolenoid = new Solenoid(RobotMap.PCM.hatchRelease);
+        LowerSolenoidAssembly = new Solenoid(RobotMap.PCM.hatchLower);
     }
 
     @Override
