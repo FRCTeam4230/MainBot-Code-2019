@@ -4,6 +4,7 @@ package frc.robot;
 import frc.robot.commands.*;
 import frc.robot.commands.Climber.*;
 import frc.robot.utils.AnalogAxis;
+import frc.robot.utils.ControllerMap;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.*;
@@ -25,11 +26,11 @@ public class OI {
         driverController = new Joystick(0);
         operatorController = new Joystick(1);
         // Set the channels on the Joysticks
-        driverController.setXChannel(5);
-        driverController.setYChannel(4);
+        driverController.setXChannel(ControllerMap.analog.RY);
+        driverController.setYChannel(ControllerMap.analog.RX);
 
-        operatorController.setXChannel(1);
-        operatorController.setYChannel(0);
+        operatorController.setXChannel(ControllerMap.analog.LY);
+        operatorController.setYChannel(ControllerMap.analog.LX);
 
         bindDefButtons();
 
@@ -38,26 +39,26 @@ public class OI {
     }
 
     private void bindDefButtons() {
-        Button lowerB = new JoystickButton(driverController, 1);
-        Button raiseB = new JoystickButton(driverController, 4);
-        Button raiseFrontB = new JoystickButton(driverController, 2);
-        Button raiseBackB = new JoystickButton(driverController, 3);
+        Button lowerB = new JoystickButton(driverController, ControllerMap.buttons.A);
+        Button raiseB = new JoystickButton(driverController, ControllerMap.buttons.Y);
+        Button raiseFrontB = new JoystickButton(driverController, ControllerMap.buttons.B);
+        Button raiseBackB = new JoystickButton(driverController, ControllerMap.buttons.X);
 
         lowerB.whenPressed(new frc.robot.commands.Climber.Lower());
         raiseB.whenPressed(new frc.robot.commands.Climber.Raise());
         raiseFrontB.whenPressed(new frc.robot.commands.Climber.RaiseFront());
         raiseBackB.whenPressed(new frc.robot.commands.Climber.RaiseBack());
 
-        AnalogAxis hatchLower = new AnalogAxis(driverController, 3, 0.5);
-        Button hatchRelease = new JoystickButton(driverController, 6);
+        AnalogAxis hatchLower = new AnalogAxis(driverController, ControllerMap.analog.RT, 0.5);
+        Button hatchRelease = new JoystickButton(driverController, ControllerMap.buttons.RS);
 
         hatchLower.whenActive(new frc.robot.commands.Hatch.Lower());
         hatchLower.whenInactive(new frc.robot.commands.Hatch.Raise());
         hatchRelease.whenPressed(new frc.robot.commands.Hatch.Release());
         hatchRelease.whenReleased(new frc.robot.commands.Hatch.Reset());
 
-        Button enableCompressor = new JoystickButton(operatorController, 4);
-        Button disableCompressor = new JoystickButton(operatorController, 1);
+        Button enableCompressor = new JoystickButton(operatorController, ControllerMap.buttons.Y);
+        Button disableCompressor = new JoystickButton(operatorController, ControllerMap.buttons.A);
 
         enableCompressor.whenPressed(new frc.robot.commands.compressor.Enable());
         disableCompressor.whenPressed(new frc.robot.commands.compressor.Disable());
