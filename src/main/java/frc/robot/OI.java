@@ -55,6 +55,12 @@ public class OI {
         hatchLower.whenInactive(new frc.robot.commands.Hatch.Raise());
         hatchRelease.whenPressed(new frc.robot.commands.Hatch.Release());
         hatchRelease.whenReleased(new frc.robot.commands.Hatch.Reset());
+
+        Button enableCompressor = new JoystickButton(operatorController, 4);
+        Button disableCompressor = new JoystickButton(operatorController, 1);
+
+        enableCompressor.whenPressed(new frc.robot.commands.compressor.Enable());
+        disableCompressor.whenPressed(new frc.robot.commands.compressor.Disable());
     }
 
         //IDK
