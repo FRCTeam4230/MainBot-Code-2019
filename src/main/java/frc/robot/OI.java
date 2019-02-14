@@ -39,10 +39,10 @@ public class OI {
     }
 
     private void bindDefButtons() {
-        Button lowerB = new JoystickButton(driverController, ControllerMap.buttons.A);
-        Button raiseB = new JoystickButton(driverController, ControllerMap.buttons.Y);
-        Button raiseFrontB = new JoystickButton(driverController, ControllerMap.buttons.B);
-        Button raiseBackB = new JoystickButton(driverController, ControllerMap.buttons.X);
+        Button lowerB = new JoystickButton(operatorController, ControllerMap.buttons.Y);
+        Button raiseB = new JoystickButton(operatorController, ControllerMap.buttons.X);
+        Button raiseFrontB = new JoystickButton(operatorController, ControllerMap.buttons.B);
+        Button raiseBackB = new JoystickButton(operatorController, ControllerMap.buttons.A);
 
         lowerB.whenPressed(new frc.robot.commands.Climber.Lower());
         raiseB.whenPressed(new frc.robot.commands.Climber.Raise());
@@ -56,12 +56,6 @@ public class OI {
         hatchLower.whenInactive(new frc.robot.commands.Hatch.Raise());
         hatchRelease.whenPressed(new frc.robot.commands.Hatch.Release());
         hatchRelease.whenReleased(new frc.robot.commands.Hatch.Reset());
-
-        Button enableCompressor = new JoystickButton(operatorController, ControllerMap.buttons.Y);
-        Button disableCompressor = new JoystickButton(operatorController, ControllerMap.buttons.A);
-
-        enableCompressor.whenPressed(new frc.robot.commands.compressor.Enable());
-        disableCompressor.whenPressed(new frc.robot.commands.compressor.Disable());
     }
 
         //IDK
