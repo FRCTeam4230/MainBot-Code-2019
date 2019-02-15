@@ -32,7 +32,8 @@ public class Climber extends Subsystem {
         // initialize variables
         frontPiston = new Solenoid(RobotMap.PCM.climberFront);
         backPiston = new Solenoid(RobotMap.PCM.climberBack);
-        climberDrive = new VictorSPX(5);
+        climberDrive = new VictorSPX(RobotMap.CAN.driveClimber);
+        climberDrive.configOpenloopRamp(1);
         this.raiseAll();
         frontDeployed = false;
         backDeployed = false;
@@ -40,7 +41,7 @@ public class Climber extends Subsystem {
 
     @Override
     public void initDefaultCommand() {
-        // No default command
+        setDefaultCommand(new frc.robot.commands.Climber.JoystickDrive());
     }
 
     @Override
@@ -84,5 +85,9 @@ public class Climber extends Subsystem {
             SmartDashboard.putString("Latest Error", "Tried to Retract rear piston while front piston is deployed");
             SmartDashboard.putBoolean("Piston Status", false);
         }
+    }
+
+    public void driveClimber(double speed) {
+        climberDrive.set(ControlMode.PercentOutput, speed);
     }
 }

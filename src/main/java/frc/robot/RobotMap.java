@@ -15,6 +15,7 @@ public class RobotMap {
     }
     public static class Constants {
         public static double intake = 0.4;
+        public static double climberDriveSpeedMult = 0.7;
     }
     public static class PCM {
         public static int guide = 6;

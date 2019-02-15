@@ -95,6 +95,13 @@ public class OI {
         return driverController.getRawAxis(ControllerMap.analog.RX);
     }
 
+    public double getClimberDriveSpeed() {
+        double speed = operatorController.getRawAxis(ControllerMap.analog.RY);
+        speed = speed*speed; // reduce sensitivities at the extremes
+        speed *= RobotMap.Constants.climberDriveSpeedMult;
+        return speed;
+    }
+
         //IDK
     public Joystick getJoystick1() {
         return driverController;
