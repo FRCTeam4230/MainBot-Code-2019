@@ -6,8 +6,7 @@ public class ControllerMap {
         public static int X = 3;
         public static int A = 1;
         public static int B = 2;
-        public static int lShoulder = 5;
-        public static int rShoulder = 6;
+        public static int LS = 5;
         public static int RS = 6;
         public static int left = 7;
         public static int right = 8;
