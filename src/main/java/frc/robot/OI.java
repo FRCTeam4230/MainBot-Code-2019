@@ -76,6 +76,12 @@ public class OI {
         Button speedShift = new JoystickButton(driverController, ControllerMap.buttons.LS);
 
         speedShift.whenPressed(new frc.robot.commands.drivetrain.ShiftSpeed());
+
+        Button compressorOff = new JoystickButton(driverController, ControllerMap.buttons.left);
+        Button compressorOn = new JoystickButton(driverController, ControllerMap.buttons.right);
+
+        compressorOff.whenPressed(new frc.robot.commands.compressor.Disable());
+        compressorOn.whenPressed(new frc.robot.commands.compressor.Enable());
     }
 
     public double getDriveSpeed() {
