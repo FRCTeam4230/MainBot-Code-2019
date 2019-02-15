@@ -72,6 +72,10 @@ public class OI {
         slideUp.whenReleased(new frc.robot.commands.slide.StopMotor());
         slideDown.whenPressed(new frc.robot.commands.slide.SlideDown());
         slideDown.whenReleased(new frc.robot.commands.slide.StopMotor());
+
+        Button speedShift = new JoystickButton(driverController, ControllerMap.buttons.LS);
+
+        speedShift.whenPressed(new frc.robot.commands.drivetrain.ShiftSpeed());
     }
 
     public double getDriveSpeed() {
