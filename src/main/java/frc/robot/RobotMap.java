@@ -17,7 +17,8 @@ public class RobotMap {
         public static double intake = 0.4;
     }
     public static class PCM {
-        public static int hatchRelease = 6;
+        public static int guide = 6;
+        public static int hatchRelease = 7;
         public static int hatchLower = 3;
         public static int climberFront = 4;
         public static int climberBack = 5;
