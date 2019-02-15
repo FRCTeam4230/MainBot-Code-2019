@@ -57,6 +57,10 @@ public class Robot extends TimedRobot {
         SmartDashboard.putData("Auto mode", chooser);
     }
 
+    private void initSubsystems() {
+        climber.raiseAll();
+    }
+
 
     @Override
     public void disabledInit(){
@@ -70,6 +74,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
+        initSubsystems();
         autonomousCommand = chooser.getSelected();
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
