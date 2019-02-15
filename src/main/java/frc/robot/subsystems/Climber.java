@@ -25,14 +25,17 @@ public class Climber extends Subsystem {
     private Solenoid backPiston;
     private Solenoid frontPiston;
     private VictorSPX climberDrive;
+    private boolean frontDeployed;
+    private boolean backDeployed;
     
     public Climber() {
         // initialize variables
         frontPiston = new Solenoid(RobotMap.PCM.climberFront);
         backPiston = new Solenoid(RobotMap.PCM.climberBack);
         climberDrive = new VictorSPX(5);
-        frontPiston.set(false);
-        backPiston.set(false);
+        this.raiseAll();
+        frontDeployed = false;
+        backDeployed = false;
     }
 
     @Override
@@ -48,28 +51,38 @@ public class Climber extends Subsystem {
     public void lowerAll() {
         frontPiston.set(true);
         backPiston.set(true);
+        frontDeployed = true;
+        backDeployed = true;
         SmartDashboard.putBoolean("backPistonState", true);
         SmartDashboard.putBoolean("frontPistonState", true);
+        SmartDashboard.putBoolean("Piston Status", true);
     }
 
     public void raiseAll() {
         frontPiston.set(false);
         backPiston.set(false);
+        frontDeployed = false;
+        backDeployed = false;
         SmartDashboard.putBoolean("backPistonState", false);
         SmartDashboard.putBoolean("frontPistonState", false);
+        SmartDashboard.putBoolean("Piston Status", true);
     }
 
     public void raiseFront() {
-        if( frontPiston.get()){
-            frontPiston.set(false);
-            SmartDashboard.putBoolean("frontPistonState", false);
-        }
+        frontPiston.set(false);
+        frontDeployed = false;
+        SmartDashboard.putBoolean("frontPistonState", false);
+        SmartDashboard.putBoolean("Piston Status", true);
     }
 
     public void raiseBack() {
-        if( backPiston.get()){
+        if( ! frontDeployed) {
             backPiston.set(false);
             SmartDashboard.putBoolean("backPistonState", false);
+            SmartDashboard.putBoolean("Piston Status", true);
+        } else {
+            SmartDashboard.putString("Latest Error", "Tried to Retract rear piston while front piston is deployed");
+            SmartDashboard.putBoolean("Piston Status", false);
         }
     }
 }
