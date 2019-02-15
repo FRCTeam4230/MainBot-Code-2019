@@ -74,6 +74,14 @@ public class OI {
         slideDown.whenReleased(new frc.robot.commands.slide.StopMotor());
     }
 
+    public double getDriveSpeed() {
+        return -1 * driverController.getRawAxis(ControllerMap.analog.LY);
+    }
+
+    public double getDriveRot() {
+        return driverController.getRawAxis(ControllerMap.analog.RX);
+    }
+
         //IDK
     public Joystick getJoystick1() {
         return driverController;

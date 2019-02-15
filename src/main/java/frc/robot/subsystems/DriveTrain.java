@@ -23,26 +23,20 @@ import edu.wpi.first.wpilibj.SpeedController;
 
 public class DriveTrain extends Subsystem {
 
-
-    public static DifferentialDrive DriveSys; 
-    public static OI oic; 
+    private DifferentialDrive driveSys;
 
 
 
     public DriveTrain() {
-       oic = new OI();
        Boolean sq = false;
         // sets the motor types and declares the object 
        CANSparkMax m_frontLeft = new CANSparkMax(RobotMap.CAN.driveLH1, MotorType.kBrushless);
        CANSparkMax m_rearLeft = new CANSparkMax(RobotMap.CAN.driveLH2, MotorType.kBrushless);
-       
        // Declares the motor group 
        SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
-       
        // sets the motor types and declares the object 
 	   CANSparkMax m_frontRight = new CANSparkMax(RobotMap.CAN.driveRH1, MotorType.kBrushless);
        CANSparkMax m_rearRight = new CANSparkMax(RobotMap.CAN.driveRH2, MotorType.kBrushless); 
-
        // Declares the motor group 
        SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
        
@@ -55,24 +49,17 @@ public class DriveTrain extends Subsystem {
        }
 
 	   
-       DriveSys = new DifferentialDrive(m_left, m_right);
+       driveSys = new DifferentialDrive(m_left, m_right);
     }
 
     @Override
     public void initDefaultCommand() {
+        setDefaultCommand(new frc.robot.commands.drivetrain.DriveTeleop());
     }
 
     @Override
     public void periodic() {
         // Put code here to be run every loop
-
-
-        // Main command of the arcadeDrive.class , it get the data from the controller and sends it to the Speed Controller groups
-        DriveSys.arcadeDrive(oic.driverController.getRawAxis(1),  oic.driverController.getRawAxis(4), true);
     }
-
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-
 }
 
