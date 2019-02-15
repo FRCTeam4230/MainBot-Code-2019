@@ -50,12 +50,12 @@ public class OI {
         raiseBackB.whenPressed(new frc.robot.commands.Climber.RaiseBack());
 
         AnalogAxis hatchLower = new AnalogAxis(driverController, ControllerMap.analog.RT, 0.5);
-        Button hatchRelease = new JoystickButton(driverController, ControllerMap.buttons.RS);
+        AnalogAxis hatchRelease = new AnalogAxis(driverController, ControllerMap.analog.LT, 0.5);
 
-        hatchLower.whenActive(new frc.robot.commands.Hatch.Lower());
-        hatchLower.whenInactive(new frc.robot.commands.Hatch.Raise());
-        hatchRelease.whenPressed(new frc.robot.commands.Hatch.Release());
-        hatchRelease.whenReleased(new frc.robot.commands.Hatch.Reset());
+        hatchLower.whenActive(new frc.robot.commands.Hatch.LowerHatch());
+        hatchLower.whenInactive(new frc.robot.commands.Hatch.RaiseHatch());
+        hatchRelease.whenActive(new frc.robot.commands.Hatch.Release());
+        hatchRelease.whenInactive(new frc.robot.commands.Hatch.Reset());
 
         Button intakeIn = new JoystickButton(driverController, ControllerMap.buttons.Y);
         Button intakeOut = new JoystickButton(driverController, ControllerMap.buttons.A);
