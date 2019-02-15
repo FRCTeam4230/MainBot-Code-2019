@@ -25,10 +25,12 @@ public class HatchIntake extends Subsystem {
     // Declares the solenoids
     Solenoid HatchReleaseSolenoid;
     Solenoid LowerSolenoidAssembly;
+    private Solenoid guideSolenoid;
 
     public HatchIntake() {
         HatchReleaseSolenoid = new Solenoid(RobotMap.PCM.hatchRelease);
         LowerSolenoidAssembly = new Solenoid(RobotMap.PCM.hatchLower);
+        guideSolenoid = new Solenoid(RobotMap.PCM.guide);
     }
 
     @Override
@@ -54,6 +56,14 @@ public class HatchIntake extends Subsystem {
     public void raiseHatch() {
         LowerSolenoidAssembly.set(false);
         SmartDashboard.putBoolean("HatchLowered", false); 
+    }
+
+    public void lowerGuide() {
+        guideSolenoid.set(true);
+    }
+
+    public void raiseGuide() {
+        guideSolenoid.set(false);
     }
 
     @Override

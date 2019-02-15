@@ -51,11 +51,14 @@ public class OI {
 
         AnalogAxis hatchLower = new AnalogAxis(driverController, ControllerMap.analog.RT, 0.5);
         AnalogAxis hatchRelease = new AnalogAxis(driverController, ControllerMap.analog.LT, 0.5);
+        Button guideDeploy = new JoystickButton(driverController, ControllerMap.buttons.LS);
 
         hatchLower.whenActive(new frc.robot.commands.Hatch.LowerHatch());
         hatchLower.whenInactive(new frc.robot.commands.Hatch.RaiseHatch());
         hatchRelease.whenActive(new frc.robot.commands.Hatch.Release());
         hatchRelease.whenInactive(new frc.robot.commands.Hatch.Reset());
+        guideDeploy.whenPressed(new frc.robot.commands.Hatch.LowerGuide());
+        guideDeploy.whenReleased(new frc.robot.commands.Hatch.RaiseGuide());
 
         Button intakeIn = new JoystickButton(driverController, ControllerMap.buttons.Y);
         Button intakeOut = new JoystickButton(driverController, ControllerMap.buttons.A);

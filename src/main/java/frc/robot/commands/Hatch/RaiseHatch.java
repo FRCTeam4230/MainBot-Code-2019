@@ -4,11 +4,11 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import frc.robot.Robot;
 
-public class Lower extends Command {
+public class RaiseHatch extends Command {
     
     private boolean isFinished;
 
-    public Lower() {
+    public RaiseHatch() {
     }
 
     // Called just before this Command runs the first time
@@ -20,7 +20,7 @@ public class Lower extends Command {
     @Override
     protected void execute() {
         isFinished = false;
-        Robot.hatchIntake.lowerHatch();;
+        Robot.hatchIntake.raiseHatch();
         isFinished = true;
     }
 
