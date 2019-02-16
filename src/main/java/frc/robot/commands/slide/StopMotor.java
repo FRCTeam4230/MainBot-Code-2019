@@ -9,12 +9,12 @@ public class StopMotor extends Command {
     private boolean isFinished;
 
     public StopMotor() {
+        requires(Robot.slide);
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        requires(Robot.slide);
     }
 
     // Called repeatedly when this Command is scheduled to run

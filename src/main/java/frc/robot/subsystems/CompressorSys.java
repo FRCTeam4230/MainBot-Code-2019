@@ -35,7 +35,7 @@ public class CompressorSys extends Subsystem {
     public double getPressure() {
         double volts = pressureSensor.getVoltage();
         double pressure = volts*RobotMap.Constants.pressureMult - RobotMap.Constants.pressureSub;
-        return pressure;
+        return (int) pressure;
     }
 
     @Override

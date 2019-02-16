@@ -1,15 +1,14 @@
-package frc.robot.commands.intake;
+package frc.robot.commands.slide;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 import frc.robot.Robot;
 
-public class BallIn extends Command {
-    
-    private boolean isFinished;
+public class JoystickBind extends Command {
 
-    public BallIn() {
-        requires(Robot.ballIntake);
+
+    public JoystickBind() {
+        requires(Robot.slide);
     }
 
     // Called just before this Command runs the first time
@@ -20,15 +19,13 @@ public class BallIn extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        isFinished = false;
-        Robot.ballIntake.ballIn();
-        isFinished = true;
+        Robot.slide.operateSlide(Robot.oi.getLiftSpeed());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return isFinished;
+        return false;
     }
 
     // Called once after isFinished returns true

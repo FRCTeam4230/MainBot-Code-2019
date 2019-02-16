@@ -8,12 +8,12 @@ public class Lower extends Command {
     private boolean isFinished;
 
     public Lower() {
+        requires(Robot.climber);
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        requires(Robot.climber);
     }
 
     // Called repeatedly when this Command is scheduled to run
