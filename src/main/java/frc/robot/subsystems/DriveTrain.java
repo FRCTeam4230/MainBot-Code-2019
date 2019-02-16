@@ -59,7 +59,7 @@ public class DriveTrain extends Subsystem {
     }
 
     public void drive(double speed, double rot) {
-        driveSys.arcadeDrive(speed * multMap[iMult], rot * multMap[iMult], true);
+        driveSys.arcadeDrive(speed * multMap[iMult], rot * multMap[0], true);
     }
 
     public void shiftSpeedSet() {
