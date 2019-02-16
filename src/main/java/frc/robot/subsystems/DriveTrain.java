@@ -45,7 +45,7 @@ public class DriveTrain extends Subsystem {
        
 
        for(CANSparkMax motor : motors) {
-           motor.setRampRate(1);
+           motor.setOpenLoopRampRate(1);
        }
 
 	   
