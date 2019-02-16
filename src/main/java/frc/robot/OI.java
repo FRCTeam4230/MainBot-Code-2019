@@ -87,24 +87,23 @@ public class OI {
         return driverController.getRawAxis(ControllerMap.analog.RX);
     }
 
-    public double getClimberDriveSpeed() {
-        double rawSpeed = operatorController.getRawAxis(ControllerMap.analog.RY);
+    private double scaleRawSpeed(double rawSpeed, double speedMult) {
         double speed = rawSpeed*rawSpeed;
         if( rawSpeed < 0) {
             speed *= -1;
         }
-        speed *= RobotMap.Constants.climberDriveSpeedMult;
+        speed *= speedMult;
         return speed;
     }
 
+    public double getClimberDriveSpeed() {
+        return scaleRawSpeed(operatorController.getRawAxis(ControllerMap.analog.RY),
+                             RobotMap.Constants.climberDriveSpeedMult);
+    }
+
     public double getLiftSpeed() {
-        double rawSpeed = operatorController.getRawAxis(ControllerMap.analog.LY);
-        double speed = rawSpeed*rawSpeed;
-        if( rawSpeed < 0) {
-            speed *= -1;
-        }
-        speed *= RobotMap.Constants.liftSpeedMult;
-        return speed;
+        return scaleRawSpeed(operatorController.getRawAxis(ControllerMap.analog.LY),
+                             RobotMap.Constants.liftSpeedMult);
     }
         //IDK
     public Joystick getJoystick1() {
