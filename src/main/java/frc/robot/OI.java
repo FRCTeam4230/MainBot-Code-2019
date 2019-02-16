@@ -51,7 +51,7 @@ public class OI {
 
         AnalogAxis hatchLower = new AnalogAxis(driverController, ControllerMap.analog.RT, 0.5);
         AnalogAxis hatchRelease = new AnalogAxis(driverController, ControllerMap.analog.LT, 0.5);
-        Button guideDeploy = new JoystickButton(driverController, ControllerMap.buttons.LS);
+        Button guideDeploy = new JoystickButton(driverController, ControllerMap.buttons.RS);
 
         hatchLower.whenActive(new frc.robot.commands.Hatch.LowerHatch());
         hatchLower.whenInactive(new frc.robot.commands.Hatch.RaiseHatch());
@@ -60,14 +60,6 @@ public class OI {
         guideDeploy.whenPressed(new frc.robot.commands.Hatch.LowerGuide());
         guideDeploy.whenReleased(new frc.robot.commands.Hatch.RaiseGuide());
 
-        Button intakeIn = new JoystickButton(driverController, ControllerMap.buttons.Y);
-        Button intakeOut = new JoystickButton(driverController, ControllerMap.buttons.A);
-
-        intakeIn.whenPressed(new frc.robot.commands.intake.BallIn());
-        intakeIn.whenReleased(new frc.robot.commands.intake.StopMotor());
-        intakeOut.whenPressed(new frc.robot.commands.intake.BallOut());
-        intakeOut.whenReleased(new frc.robot.commands.intake.StopMotor());
-
         Button slideUp = new JoystickButton(operatorController, ControllerMap.buttons.LS);
         Button slideDown = new JoystickButton(operatorController, ControllerMap.buttons.RS);
 
@@ -75,6 +67,14 @@ public class OI {
         slideUp.whenReleased(new frc.robot.commands.slide.StopMotor());
         slideDown.whenPressed(new frc.robot.commands.slide.SlideDown());
         slideDown.whenReleased(new frc.robot.commands.slide.StopMotor());
+
+        AnalogAxis intakeIn = new AnalogAxis(operatorController, ControllerMap.analog.RT, 0.5);
+        AnalogAxis intakeOut = new AnalogAxis(operatorController, ControllerMap.analog.LT, 0.5);
+
+        intakeIn.whenActive(new frc.robot.commands.intake.BallIn());
+        intakeIn.whenInactive(new frc.robot.commands.intake.StopMotor());
+        intakeOut.whenActive(new frc.robot.commands.intake.BallOut());
+        intakeOut.whenInactive(new frc.robot.commands.intake.StopMotor());
 
         Button speedShift = new JoystickButton(driverController, ControllerMap.buttons.LS);
 
