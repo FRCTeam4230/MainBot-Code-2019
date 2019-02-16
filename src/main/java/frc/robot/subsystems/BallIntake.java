@@ -29,11 +29,11 @@ public class BallIntake extends Subsystem {
     }
 
     public void ballIn() {
-        intakeMotor.set(ControlMode.PercentOutput, RobotMap.Constants.intake);
+        intakeMotor.set(ControlMode.PercentOutput, -1 * RobotMap.Constants.intake);
     }
 
     public void ballOut() {
-        intakeMotor.set(ControlMode.PercentOutput, -1 * RobotMap.Constants.intake);
+        intakeMotor.set(ControlMode.PercentOutput, RobotMap.Constants.intake);
     }
 
     public void stopMotor() {
