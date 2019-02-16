@@ -13,6 +13,7 @@ public class Lower extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        requires(Robot.climber);
     }
 
     // Called repeatedly when this Command is scheduled to run

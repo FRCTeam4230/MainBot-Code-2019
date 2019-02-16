@@ -8,6 +8,7 @@ public class RaiseFront extends Command {
     private boolean isFinished;
 
     public RaiseFront() {
+        requires(Robot.climber);
     }
 
     // Called just before this Command runs the first time

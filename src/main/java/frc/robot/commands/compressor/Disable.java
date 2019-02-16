@@ -8,6 +8,7 @@ public class Disable extends Command {
     private boolean isFinished;
 
     public Disable() {
+        requires(Robot.compressor);
     }
 
     // Called just before this Command runs the first time
