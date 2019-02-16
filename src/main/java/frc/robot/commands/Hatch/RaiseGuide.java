@@ -9,6 +9,7 @@ public class RaiseGuide extends Command {
     private boolean isFinished;
 
     public RaiseGuide() {
+        requires(Robot.hatchIntake);
     }
 
     // Called just before this Command runs the first time

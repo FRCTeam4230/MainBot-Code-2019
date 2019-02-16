@@ -9,6 +9,7 @@ public class Reset extends Command {
     private boolean isFinished;
 
     public Reset() {
+        requires(Robot.hatchIntake);
     }
 
     // Called just before this Command runs the first time

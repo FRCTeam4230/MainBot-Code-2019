@@ -9,6 +9,7 @@ public class LowerHatch extends Command {
     private boolean isFinished;
 
     public LowerHatch() {
+        requires(Robot.hatchIntake);
     }
 
     // Called just before this Command runs the first time

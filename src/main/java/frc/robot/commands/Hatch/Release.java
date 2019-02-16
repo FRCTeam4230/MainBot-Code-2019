@@ -9,6 +9,7 @@ public class Release extends Command {
     private boolean isFinished;
 
     public Release() {
+        requires(Robot.hatchIntake);
     }
 
     // Called just before this Command runs the first time

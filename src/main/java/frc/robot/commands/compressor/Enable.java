@@ -8,6 +8,7 @@ public class Enable extends Command {
     private boolean isFinished;
 
     public Enable() {
+        requires(Robot.compressor);
     }
 
     // Called just before this Command runs the first time

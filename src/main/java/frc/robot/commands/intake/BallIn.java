@@ -9,6 +9,7 @@ public class BallIn extends Command {
     private boolean isFinished;
 
     public BallIn() {
+        requires(Robot.ballIntake);
     }
 
     // Called just before this Command runs the first time

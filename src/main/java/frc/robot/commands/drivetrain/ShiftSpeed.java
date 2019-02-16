@@ -10,6 +10,7 @@ public class ShiftSpeed extends Command {
 
 
     public ShiftSpeed() {
+        requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time

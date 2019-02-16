@@ -9,6 +9,7 @@ public class StopMotor extends Command {
     private boolean isFinished;
 
     public StopMotor() {
+        requires(Robot.slide);
     }
 
     // Called just before this Command runs the first time

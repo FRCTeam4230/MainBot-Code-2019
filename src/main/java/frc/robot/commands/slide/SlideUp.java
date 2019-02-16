@@ -9,6 +9,7 @@ public class SlideUp extends Command {
     private boolean isFinished;
 
     public SlideUp() {
+        requires(Robot.slide);
     }
 
     // Called just before this Command runs the first time
