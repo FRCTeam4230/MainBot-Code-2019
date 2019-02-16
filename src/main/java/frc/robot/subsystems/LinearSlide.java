@@ -18,7 +18,7 @@ public class LinearSlide extends Subsystem {
 
     @Override
     public void initDefaultCommand() {
-
+        setDefaultCommand(new frc.robot.commands.slide.JoystickBind());
     }
 
     public void slideUp() {
@@ -27,6 +27,10 @@ public class LinearSlide extends Subsystem {
 
     public void slideDown() {
         linearMotor.set(ControlMode.PercentOutput, RobotMap.Constants.intake);
+    }
+
+    public void operateSlide(double speed) {
+        linearMotor.set(ControlMode.PercentOutput, speed);
     }
 
     public void stopMotor() {

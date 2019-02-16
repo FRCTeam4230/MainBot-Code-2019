@@ -60,14 +60,6 @@ public class OI {
         guideDeploy.whenPressed(new frc.robot.commands.Hatch.LowerGuide());
         guideDeploy.whenReleased(new frc.robot.commands.Hatch.RaiseGuide());
 
-        Button slideUp = new JoystickButton(operatorController, ControllerMap.buttons.LS);
-        Button slideDown = new JoystickButton(operatorController, ControllerMap.buttons.RS);
-
-        slideUp.whenPressed(new frc.robot.commands.slide.SlideUp());
-        slideUp.whenReleased(new frc.robot.commands.slide.StopMotor());
-        slideDown.whenPressed(new frc.robot.commands.slide.SlideDown());
-        slideDown.whenReleased(new frc.robot.commands.slide.StopMotor());
-
         AnalogAxis intakeIn = new AnalogAxis(operatorController, ControllerMap.analog.RT, 0.5);
         AnalogAxis intakeOut = new AnalogAxis(operatorController, ControllerMap.analog.LT, 0.5);
 
@@ -105,6 +97,15 @@ public class OI {
         return speed;
     }
 
+    public double getLiftSpeed() {
+        double rawSpeed = operatorController.getRawAxis(ControllerMap.analog.LY);
+        double speed = rawSpeed*rawSpeed;
+        if( rawSpeed < 0) {
+            speed *= -1;
+        }
+        speed *= RobotMap.Constants.liftSpeedMult;
+        return speed;
+    }
         //IDK
     public Joystick getJoystick1() {
         return driverController;
