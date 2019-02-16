@@ -17,7 +17,7 @@ public class RobotMap {
         public static int linSlide = 7;
     }
     public static class Constants {
-        public static double intake = 0.4;
+        public static double intake = 0.8;
         public static double climberDriveSpeedMult = 0.7;
         // from the datasheet http://www.revrobotics.com/content/docs/REV-11-1107-DS.pdf
         // formula: Pressure = inVolts * pressureMult + pressureAdd
