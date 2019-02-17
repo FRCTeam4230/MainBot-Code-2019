@@ -2,7 +2,6 @@ package frc.robot;
 
 
 import frc.robot.commands.*;
-import frc.robot.commands.Climber.*;
 import frc.robot.utils.AnalogAxis;
 import frc.robot.utils.ControllerMap;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -44,21 +43,21 @@ public class OI {
         Button raiseFrontB = new JoystickButton(operatorController, ControllerMap.buttons.B);
         Button raiseBackB = new JoystickButton(operatorController, ControllerMap.buttons.A);
 
-        lowerB.whenPressed(new frc.robot.commands.Climber.Lower());
-        raiseB.whenPressed(new frc.robot.commands.Climber.Raise());
-        raiseFrontB.whenPressed(new frc.robot.commands.Climber.RaiseFront());
-        raiseBackB.whenPressed(new frc.robot.commands.Climber.RaiseBack());
+        lowerB.whenPressed(new frc.robot.commands.climber.Lower());
+        raiseB.whenPressed(new frc.robot.commands.climber.Raise());
+        raiseFrontB.whenPressed(new frc.robot.commands.climber.RaiseFront());
+        raiseBackB.whenPressed(new frc.robot.commands.climber.RaiseBack());
 
         AnalogAxis hatchLower = new AnalogAxis(driverController, ControllerMap.analog.RT, 0.5);
         AnalogAxis hatchRelease = new AnalogAxis(driverController, ControllerMap.analog.LT, 0.5);
         Button guideDeploy = new JoystickButton(driverController, ControllerMap.buttons.RS);
 
-        hatchLower.whenActive(new frc.robot.commands.Hatch.LowerHatch());
-        hatchLower.whenInactive(new frc.robot.commands.Hatch.RaiseHatch());
-        hatchRelease.whenActive(new frc.robot.commands.Hatch.Release());
-        hatchRelease.whenInactive(new frc.robot.commands.Hatch.Reset());
-        guideDeploy.whenPressed(new frc.robot.commands.Hatch.LowerGuide());
-        guideDeploy.whenReleased(new frc.robot.commands.Hatch.RaiseGuide());
+        hatchLower.whenActive(new frc.robot.commands.hatch.LowerHatch());
+        hatchLower.whenInactive(new frc.robot.commands.hatch.RaiseHatch());
+        hatchRelease.whenActive(new frc.robot.commands.hatch.Release());
+        hatchRelease.whenInactive(new frc.robot.commands.hatch.Reset());
+        guideDeploy.whenPressed(new frc.robot.commands.hatch.LowerGuide());
+        guideDeploy.whenReleased(new frc.robot.commands.hatch.RaiseGuide());
 
         AnalogAxis intakeIn = new AnalogAxis(operatorController, ControllerMap.analog.RT, 0.5);
         AnalogAxis intakeOut = new AnalogAxis(operatorController, ControllerMap.analog.LT, 0.5);

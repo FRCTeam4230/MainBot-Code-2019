@@ -1,6 +1,5 @@
 package frc.robot.subsystems;
 
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 import frc.robot.OI;
@@ -41,7 +40,7 @@ public class Climber extends Subsystem {
 
     @Override
     public void initDefaultCommand() {
-        setDefaultCommand(new frc.robot.commands.Climber.JoystickDrive());
+        setDefaultCommand(new frc.robot.commands.climber.JoystickDrive());
     }
 
     @Override

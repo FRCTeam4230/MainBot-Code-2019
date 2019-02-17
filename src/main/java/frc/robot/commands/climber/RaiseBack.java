@@ -1,15 +1,14 @@
-package frc.robot.commands.Hatch;
-
+package frc.robot.commands.climber;
 import edu.wpi.first.wpilibj.command.Command;
 
 import frc.robot.Robot;
 
-public class Release extends Command {
-    
+public class RaiseBack extends Command {
+
     private boolean isFinished;
 
-    public Release() {
-        requires(Robot.hatchIntake);
+    public RaiseBack() {
+        requires(Robot.climber);
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +20,7 @@ public class Release extends Command {
     @Override
     protected void execute() {
         isFinished = false;
-        Robot.hatchIntake.releaseHatch();
+        Robot.climber.raiseBack();
         isFinished = true;
     }
 

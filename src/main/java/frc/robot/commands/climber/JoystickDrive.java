@@ -1,13 +1,13 @@
-package frc.robot.commands.Climber;
+package frc.robot.commands.climber;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 import frc.robot.Robot;
 
-public class Raise extends Command {
+public class JoystickDrive extends Command {
 
-    private boolean isFinished;
 
-    public Raise() {
+    public JoystickDrive() {
         requires(Robot.climber);
     }
 
@@ -19,15 +19,13 @@ public class Raise extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        isFinished = false;
-        Robot.climber.raiseAll();
-        isFinished = true;
+        Robot.climber.driveClimber(Robot.oi.getClimberDriveSpeed());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return isFinished;
+        return false;
     }
 
     // Called once after isFinished returns true

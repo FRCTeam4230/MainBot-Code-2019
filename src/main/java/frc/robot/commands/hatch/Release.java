@@ -1,14 +1,14 @@
-package frc.robot.commands.Hatch;
+package frc.robot.commands.hatch;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 import frc.robot.Robot;
 
-public class RaiseHatch extends Command {
+public class Release extends Command {
     
     private boolean isFinished;
 
-    public RaiseHatch() {
+    public Release() {
         requires(Robot.hatchIntake);
     }
 
@@ -21,7 +21,7 @@ public class RaiseHatch extends Command {
     @Override
     protected void execute() {
         isFinished = false;
-        Robot.hatchIntake.raiseHatch();
+        Robot.hatchIntake.releaseHatch();
         isFinished = true;
     }
 
