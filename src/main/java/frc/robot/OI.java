@@ -1,14 +1,13 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import frc.robot.commands.*;
+import frc.robot.commands.AutonomousCommand;
 import frc.robot.utils.AnalogAxis;
 import frc.robot.utils.ControllerMap;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.*;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
 
 /**
  * This class is the glue that binds the controls on the physical operator

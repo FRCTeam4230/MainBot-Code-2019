@@ -1,21 +1,13 @@
 package frc.robot.subsystems;
 
-import frc.robot.RobotMap;
-
-import frc.robot.OI;
-
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-// import the SmartDashboard 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
-// imports the CRTE libriry
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-
-// import solenoid class
-import edu.wpi.first.wpilibj.Solenoid;
-
+import frc.robot.OI;
+import frc.robot.RobotMap;
 
 public class Climber extends Subsystem {
 

@@ -1,30 +1,13 @@
-// package
 package frc.robot;
 
-// Nuematics stuff
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-// Spark Max
-
-
-// Commands and Subsystems.
-import frc.robot.commands.*;
+import frc.robot.commands.AutonomousCommand;
 import frc.robot.subsystems.*;
-
-
-
-// FRC Stuff
-
-//Talaron code
-
-//import com.revrobotics.CANSparkMax;
-// Spark MAX
-// import com.sun.tools.classfile.StackMapTable_attribute.stack_map_frame;
 
 public class Robot extends TimedRobot {
 
