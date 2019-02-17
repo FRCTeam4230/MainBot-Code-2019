@@ -36,7 +36,11 @@ public class OI {
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());    
     }
 
+    /**
+     * Bind the default buttons on both controllers
+     */
     private void bindDefButtons() {
+        // climber button mappings
         Button lowerB = new JoystickButton(operatorController, ControllerMap.buttons.Y);
         Button raiseB = new JoystickButton(operatorController, ControllerMap.buttons.X);
         Button raiseFrontB = new JoystickButton(operatorController, ControllerMap.buttons.B);
@@ -47,6 +51,7 @@ public class OI {
         raiseFrontB.whenPressed(new frc.robot.commands.climber.RaiseFront());
         raiseBackB.whenPressed(new frc.robot.commands.climber.RaiseBack());
 
+        // hatch button mappings
         AnalogAxis hatchLower = new AnalogAxis(driverController, ControllerMap.analog.RT, 0.5);
         AnalogAxis hatchRelease = new AnalogAxis(driverController, ControllerMap.analog.LT, 0.5);
         Button guideDeploy = new JoystickButton(driverController, ControllerMap.buttons.RS);
@@ -58,6 +63,7 @@ public class OI {
         guideDeploy.whenPressed(new frc.robot.commands.hatch.LowerGuide());
         guideDeploy.whenReleased(new frc.robot.commands.hatch.RaiseGuide());
 
+        // ball intake button mappings
         AnalogAxis intakeIn = new AnalogAxis(operatorController, ControllerMap.analog.RT, 0.5);
         AnalogAxis intakeOut = new AnalogAxis(operatorController, ControllerMap.analog.LT, 0.5);
 
@@ -66,10 +72,13 @@ public class OI {
         intakeOut.whenActive(new frc.robot.commands.intake.BallOut());
         intakeOut.whenInactive(new frc.robot.commands.intake.StopMotor());
 
+        // drivetrain speedshift button mappings
         Button speedShift = new JoystickButton(driverController, ControllerMap.buttons.LS);
 
         speedShift.whenPressed(new frc.robot.commands.drivetrain.ShiftSpeed());
 
+
+        // Compressor button mappings
         Button compressorOff = new JoystickButton(driverController, ControllerMap.buttons.left);
         Button compressorOn = new JoystickButton(driverController, ControllerMap.buttons.right);
 
@@ -77,14 +86,35 @@ public class OI {
         compressorOn.whenPressed(new frc.robot.commands.compressor.Enable());
     }
 
+    /**
+     * Gets the drive speed value from the stick. Input sensitivity curves
+     * should be applied here.
+     *
+     * @return a value between -1 and 1 porportional to drivetrain speed
+     */
     public double getDriveSpeed() {
         return -1 * driverController.getRawAxis(ControllerMap.analog.LY);
     }
 
+    /**
+     * Gets the drivetrain rotation from the stick. Input sensitivity curves
+     * should be applied here.
+     *
+     * @return a value between -1 and 1 porportional to the drivetrain rotation
+     *         rate
+     */
     public double getDriveRot() {
         return driverController.getRawAxis(ControllerMap.analog.RX);
     }
 
+    /**
+     * Scale a raw input from the controller to new desired range. The input
+     * sensitivity curve is applied here.
+     *
+     * @param rawSpeed The raw speed input from the stick
+     * @param speedMult The multiplier that should be applied to the raw input
+     * @return a value between -1 and 1 representing the scaled speed
+     */
     private double scaleRawSpeed(double rawSpeed, double speedMult) {
         double speed = rawSpeed*rawSpeed;
         if( rawSpeed < 0) {
@@ -94,11 +124,22 @@ public class OI {
         return speed;
     }
 
+    /**
+     * Gets the climber speed from the control stick.
+     *
+     * @return a value between -1 and 1 proportional to the climber motor speed
+     */
     public double getClimberDriveSpeed() {
         return scaleRawSpeed(operatorController.getRawAxis(ControllerMap.analog.RY),
                              RobotMap.Constants.climberDriveSpeedMult);
     }
 
+    /**
+     * Gets the lift speed from the control stick
+     *
+     * @return a value between -1 and 1 porportional to the desired speed of
+     *         the climber motor
+     */
     public double getLiftSpeed() {
         return scaleRawSpeed(operatorController.getRawAxis(ControllerMap.analog.LY),
                              RobotMap.Constants.liftSpeedMult);

@@ -1,7 +1,17 @@
 package frc.robot.utils;
 
+/**
+ * Maps Controller buttons to human readable names to prevent wrangling
+ * "magic numbers". These mappings are valid for standard Xbox xinput
+ * compatible controllers
+ *
+ * @author Max Hahn
+ */
 public class ControllerMap {
-    public  static class buttons {
+    /**
+     * Contains mappings for "pressable" button IDs
+     */
+    public static class buttons {
         public static int Y = 4;
         public static int X = 3;
         public static int A = 1;
@@ -13,6 +23,10 @@ public class ControllerMap {
         public static int lStick = 9;
         public static int rStick = 10;
     }
+
+    /**
+     * contains mappings for anlog input axis IDs
+     */
     public static class analog {
         public static int LX = 0;
         public static int LY = 1;
