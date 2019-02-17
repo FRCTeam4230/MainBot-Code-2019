@@ -42,4 +42,3 @@ public class LinearSlide extends Subsystem {
         // No periodic code
     }
 }
-

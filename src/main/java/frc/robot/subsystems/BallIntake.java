@@ -38,4 +38,3 @@ public class BallIntake extends Subsystem {
         // linearSlideMotor.set(ControlMode.PercentOutput, Robot.oi.operatorController.getRawAxis(1));
     }
 }
-

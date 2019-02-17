@@ -57,4 +57,3 @@ public class HatchIntake extends Subsystem {
         // No periodic code
     }
 }
-
