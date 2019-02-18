@@ -76,6 +76,7 @@ public class OI {
         Button speedShift = new JoystickButton(driverController, ControllerMap.buttons.LS);
 
         speedShift.whenPressed(new frc.robot.commands.drivetrain.ShiftSpeed());
+        speedShift.whenReleased(new frc.robot.commands.drivetrain.ShiftSpeed());
 
 
         // Compressor button mappings
@@ -104,7 +105,7 @@ public class OI {
      *         rate
      */
     public double getDriveRot() {
-        return driverController.getRawAxis(ControllerMap.analog.RX);
+        return driverController.getRawAxis(ControllerMap.analog.RX) * 0.625;
     }
 
     /**
