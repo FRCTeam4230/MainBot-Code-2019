@@ -26,7 +26,7 @@ public class DriveTrain extends Subsystem {
     private DifferentialDrive driveSys;
     // Multiplier control for the speed/turn input mappings
     private int iMult;
-    private double multMap[] = {0.5, 1};
+    private double multMap[] = {0.5, 0.8};
 
     public DriveTrain() {
        Boolean sq = false;
