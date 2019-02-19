@@ -27,7 +27,7 @@
 *.lai
 *.la
 *.a
-*.lib
+*.org.team4230.lib
 
 # Executables
 *.exe
