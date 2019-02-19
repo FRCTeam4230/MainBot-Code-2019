@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -9,12 +11,12 @@ import frc.robot.RobotMap;
 public class HatchIntake extends Subsystem {
 
     // Declares the solenoids
-    Solenoid HatchReleaseSolenoid;
+    DoubleSolenoid HatchRelease;
     Solenoid LowerSolenoidAssembly;
     private Solenoid guideSolenoid;
 
     public HatchIntake() {
-        HatchReleaseSolenoid = new Solenoid(RobotMap.PCM.hatchRelease);
+        HatchRelease = new DoubleSolenoid(RobotMap.PCM.hatchReleaseForward, RobotMap.PCM.hatchReleaseReverse);
         LowerSolenoidAssembly = new Solenoid(RobotMap.PCM.hatchLower);
         guideSolenoid = new Solenoid(RobotMap.PCM.guide);
     }
@@ -25,12 +27,12 @@ public class HatchIntake extends Subsystem {
     }
 
     public void releaseHatch() {
-        HatchReleaseSolenoid.set(true);
+        HatchRelease.set(Value.kForward);
         SmartDashboard.putBoolean("HatchReleasing", true); 
     }
 
     public void resetHatch() {
-        HatchReleaseSolenoid.set(false);
+        HatchRelease.set(Value.kReverse);
         SmartDashboard.putBoolean("HatchReleasing", false);
     }
     

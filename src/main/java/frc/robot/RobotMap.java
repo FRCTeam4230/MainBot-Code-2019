@@ -42,8 +42,9 @@ public class RobotMap {
      * Contains mappings for devices (solenoids) controlled by the PCM
      */
     public static class PCM {
+        public static int hatchReleaseForward = 0;
+        public static int hatchReleaseReverse = 1;
         public static int guide = 6;
-        public static int hatchRelease = 7;
         public static int hatchLower = 3;
         public static int climberFront = 5;
         public static int climberBack = 4;
