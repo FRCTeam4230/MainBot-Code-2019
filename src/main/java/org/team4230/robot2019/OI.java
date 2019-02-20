@@ -61,15 +61,24 @@ public class OI {
         raiseFrontB.whenPressed(new org.team4230.robot2019.commands.climber.RaiseFront());
         raiseBackB.whenPressed(new org.team4230.robot2019.commands.climber.RaiseBack());
 
-        // hatch button mappings
-        AnalogAxis hatchLower = new AnalogAxis(driverController, ControllerMap.analog.RT, 0.5);
-        AnalogAxis hatchRelease = new AnalogAxis(driverController, ControllerMap.analog.LT, 0.5);
+        // operator hatch button mappings
+        Button oHatchLower = new JoystickButton(operatorController, ControllerMap.buttons.RS);
+        Button oHatchRelease = new JoystickButton(operatorController, ControllerMap.buttons.LS);
+
+        oHatchLower.whenPressed(new org.team4230.robot2019.commands.hatch.LowerHatch());
+        oHatchLower.whenReleased(new org.team4230.robot2019.commands.hatch.RaiseHatch());
+        oHatchRelease.whenPressed(new org.team4230.robot2019.commands.hatch.Release());
+        oHatchRelease.whenReleased(new org.team4230.robot2019.commands.hatch.Reset());
+
+        // driver hatch button mappings
+        AnalogAxis dHatchLower = new AnalogAxis(driverController, ControllerMap.analog.RT, 0.5);
+        AnalogAxis dHatchRelease = new AnalogAxis(driverController, ControllerMap.analog.LT, 0.5);
         Button guideDeploy = new JoystickButton(driverController, ControllerMap.buttons.RS);
 
-        hatchLower.whenActive(new org.team4230.robot2019.commands.hatch.LowerHatch());
-        hatchLower.whenInactive(new org.team4230.robot2019.commands.hatch.RaiseHatch());
-        hatchRelease.whenActive(new org.team4230.robot2019.commands.hatch.Release());
-        hatchRelease.whenInactive(new org.team4230.robot2019.commands.hatch.Reset());
+        dHatchLower.whenActive(new org.team4230.robot2019.commands.hatch.LowerHatch());
+        dHatchLower.whenInactive(new org.team4230.robot2019.commands.hatch.RaiseHatch());
+        dHatchRelease.whenActive(new org.team4230.robot2019.commands.hatch.Release());
+        dHatchRelease.whenInactive(new org.team4230.robot2019.commands.hatch.Reset());
         guideDeploy.whenPressed(new org.team4230.robot2019.commands.hatch.LowerGuide());
         guideDeploy.whenReleased(new org.team4230.robot2019.commands.hatch.RaiseGuide());
 
