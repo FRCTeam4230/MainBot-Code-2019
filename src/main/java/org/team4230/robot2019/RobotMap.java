@@ -7,6 +7,7 @@ public class RobotMap {
      */
     public static class AnalogIn { 
         public static int pressureSensor = 0;
+        public static int ultrasonicSensor = 1;
     }
 
     /**
