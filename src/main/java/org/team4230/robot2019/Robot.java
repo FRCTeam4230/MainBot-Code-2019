@@ -1,5 +1,6 @@
 package org.team4230.robot2019;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -36,6 +37,7 @@ public class Robot extends TimedRobot {
         hatchIntake = new HatchIntake();
         slide = new LinearSlide();
         ultrasonic = new MaxSonar(RobotMap.AnalogIn.ultrasonicSensor);
+        CameraServer.getInstance().startAutomaticCapture();
 
         oi = new OI();
 
