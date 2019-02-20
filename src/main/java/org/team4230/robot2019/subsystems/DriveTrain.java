@@ -17,7 +17,7 @@ public class DriveTrain extends PIDSubsystem {
     private DifferentialDrive driveSys;
     // Multiplier control for the speed/turn input mappings
     private int iMult;
-    private double multMap[] = {0.5, 0.8};
+    private double multMap[] = {0.625, 0.5};
     private DoubleSupplier getPIDInput;
     private PIDController controller;
 
@@ -69,7 +69,7 @@ public class DriveTrain extends PIDSubsystem {
     }
 
     public void drive(double speed, double rot) {
-        driveSys.arcadeDrive(speed * multMap[iMult], rot, true);
+        driveSys.arcadeDrive(speed*0.55, rot*multMap[iMult], true);
     }
 
     public void drivePIDRot(double speed) {
