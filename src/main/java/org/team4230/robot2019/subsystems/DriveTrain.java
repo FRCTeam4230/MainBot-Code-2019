@@ -2,20 +2,27 @@ package org.team4230.robot2019.subsystems;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 import org.team4230.robot2019.RobotMap;
+import org.team4230.robot2019.commands.drivetrain.DriveTeleop;
 
-public class DriveTrain extends Subsystem {
+import java.util.function.DoubleSupplier;
+
+public class DriveTrain extends PIDSubsystem {
 
     private DifferentialDrive driveSys;
     // Multiplier control for the speed/turn input mappings
     private int iMult;
     private double multMap[] = {0.5, 0.8};
+    private DoubleSupplier getPIDInput;
+    private PIDController controller;
 
-    public DriveTrain() {
+    public DriveTrain(DoubleSupplier PIDInputFunc) {
+        super("Drivetrain", 1, 0 , 0);
         Boolean sq = false;
         // sets the motor types and declares the object
         CANSparkMax m_frontLeft = new CANSparkMax(RobotMap.CAN.driveLH1, MotorType.kBrushless);
@@ -37,16 +44,36 @@ public class DriveTrain extends Subsystem {
 
 
         driveSys = new DifferentialDrive(m_left, m_right);
+        getPIDInput = PIDInputFunc;
+        controller = getPIDController();
+        controller.setContinuous(false);
+        setInputRange(-27, 27);
+        setOutputRange(-0.5, 0.5);
+        setAbsoluteTolerance(1);
         iMult = 0;
     }
 
     @Override
     public void initDefaultCommand() {
-        setDefaultCommand(new frc.robot.commands.drivetrain.DriveTeleop());
+        setDefaultCommand(new DriveTeleop());
+    }
+
+    @Override
+    protected double returnPIDInput() {
+        return getPIDInput.getAsDouble();
+    }
+
+    @Override
+    protected void usePIDOutput(double output) {
+        // not used
     }
 
     public void drive(double speed, double rot) {
         driveSys.arcadeDrive(speed * multMap[iMult], rot, true);
+    }
+
+    public void drivePIDRot(double speed) {
+        driveSys.arcadeDrive(speed, controller.get());
     }
 
     public void shiftSpeedSet() {
@@ -58,4 +85,3 @@ public class DriveTrain extends Subsystem {
         // Put code here to be run every loop
     }
 }
-

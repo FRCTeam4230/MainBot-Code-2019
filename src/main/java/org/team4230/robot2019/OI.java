@@ -3,6 +3,7 @@ package org.team4230.robot2019;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.team4230.robot2019.commands.AutonomousCommand;
@@ -19,6 +20,7 @@ public class OI {
     // Declares the joystick objects
     public Joystick driverController;
     public Joystick operatorController;
+    private CommandGroup activeAutoMode;
 
     public OI() {
         // Initialize the objects Joystick(R and L)
@@ -30,11 +32,18 @@ public class OI {
 
         operatorController.setXChannel(ControllerMap.analog.LY);
         operatorController.setYChannel(ControllerMap.analog.LX);
+        activeAutoMode = new org.team4230.robot2019.commands.drivetrain.AutoDriveToHatch();
 
         bindDefButtons();
 
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
+    }
+
+    private CommandGroup engageAutoDrive() {
+        activeAutoMode.close();
+        activeAutoMode = new org.team4230.robot2019.commands.drivetrain.AutoDriveToHatch();
+        return activeAutoMode;
     }
 
     /**
@@ -86,6 +95,24 @@ public class OI {
 
         compressorOff.whenPressed(new org.team4230.robot2019.commands.compressor.Disable());
         compressorOn.whenPressed(new org.team4230.robot2019.commands.compressor.Enable());
+
+        Button seekingDrive = new JoystickButton(driverController, ControllerMap.buttons.Y);
+        seekingDrive.whenPressed(engageAutoDrive());
+    }
+
+    public void remapForAutoMode() {
+        for(int i = 1; i < 11; ++i) {
+            Button button = new JoystickButton(driverController, i);
+            button.whenPressed(new org.team4230.robot2019.commands.drivetrain.EngageTeleop());
+        }
+    }
+
+    public void remapForTeleop() {
+        for(int i = 1; i < 11; ++i) {
+            Button button = new JoystickButton(driverController, i);
+            button.whenPressed(new org.team4230.robot2019.commands.NullCommand());
+        }
+        bindDefButtons();
     }
 
     /**

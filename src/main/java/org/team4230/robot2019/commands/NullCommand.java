@@ -5,8 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class NullCommand extends Command {
 
     @Override
-    protected boolean isFinished() {
+    public boolean isFinished() {
         return true;
     }
-
 }

@@ -20,19 +20,22 @@ public class Robot extends TimedRobot {
     public static HatchIntake hatchIntake;
     public static CompressorSys compressor;
     public static LinearSlide slide;
+    public static Limelight limelight;
+    public static MaxSonar ultrasonic;
     // public static AnalogInput pressure;
     public static OI oi;
 
     @Override
     public void robotInit() {
 
-
-        driveTrain = new DriveTrain();
+        limelight = new Limelight();
+        driveTrain = new DriveTrain(() -> limelight.getXOffset());
         climber = new Climber();
         compressor = new CompressorSys();
         ballIntake = new BallIntake();
         hatchIntake = new HatchIntake();
         slide = new LinearSlide();
+        ultrasonic = new MaxSonar(RobotMap.AnalogIn.ultrasonicSensor);
 
         oi = new OI();
 
