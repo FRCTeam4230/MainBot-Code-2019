@@ -23,6 +23,7 @@ public class Robot extends TimedRobot {
     public static LinearSlide slide;
     public static Limelight limelight;
     public static MaxSonar ultrasonic;
+    public static CameraMount camMount;
     // public static AnalogInput pressure;
     public static OI oi;
 
@@ -37,6 +38,7 @@ public class Robot extends TimedRobot {
         hatchIntake = new HatchIntake();
         slide = new LinearSlide();
         ultrasonic = new MaxSonar(RobotMap.AnalogIn.ultrasonicSensor);
+        camMount = new CameraMount();
         CameraServer.getInstance().startAutomaticCapture();
 
         oi = new OI();

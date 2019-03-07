@@ -50,4 +50,8 @@ public class RobotMap {
         public static int climberFront = 5;
         public static int climberBack = 4;
     }
+
+    public static class PWM {
+        public static int camServo = 1;
+    }
 }

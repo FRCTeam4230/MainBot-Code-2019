@@ -107,6 +107,13 @@ public class OI {
 
         Button seekingDrive = new JoystickButton(driverController, ControllerMap.buttons.Y);
         seekingDrive.whenPressed(engageAutoDrive());
+
+        Button rotateCam = new JoystickButton(driverController, ControllerMap.buttons.A);
+        Button resetCam = new JoystickButton(driverController, ControllerMap.buttons.B);
+
+
+        rotateCam.whenPressed(new org.team4230.robot2019.commands.cameraMount.Rotate());
+        resetCam.whenPressed(new org.team4230.robot2019.commands.cameraMount.Reset());
     }
 
     public void remapForAutoMode() {
